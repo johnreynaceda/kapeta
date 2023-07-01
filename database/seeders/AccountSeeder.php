@@ -14,13 +14,14 @@ class AccountSeeder extends Seeder
      */
     public function run(): void
     {
+        
         $role = Role::create([
-            'name' => 'Admnistrator'
+            'name' => 'Seller'
         ]);
 
         $user = User::create([
-            'name' => 'Administrator',
-            'email' => 'admin@gmail.com',
+            'name' => 'Seller',
+            'email' => 'seller@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => $role->id
         ]);
@@ -32,17 +33,6 @@ class AccountSeeder extends Seeder
         $user = User::create([
             'name' => 'Customer',
             'email' => 'customer@gmail.com',
-            'password' => bcrypt('password'),
-            'role_id' => $role->id
-        ]);
-
-        $role = Role::create([
-            'name' => 'Seller'
-        ]);
-
-        $user = User::create([
-            'name' => 'Seller',
-            'email' => 'seller@gmail.com',
             'password' => bcrypt('password'),
             'role_id' => $role->id
         ]);

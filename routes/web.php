@@ -19,7 +19,21 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    switch (auth()->user()->id) {
+        case 1:
+            return redirect()->route('seller.dashboard');
+            break;
+        case 2:
+            dd('seller');
+            break;
+
+        case 3:
+            dd('customer');
+            break;
+        default:
+            # code...
+            break;
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
