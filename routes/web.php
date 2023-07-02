@@ -24,11 +24,7 @@ Route::get('/dashboard', function () {
             return redirect()->route('seller.dashboard');
             break;
         case 2:
-            dd('seller');
-            break;
-
-        case 3:
-            dd('customer');
+            return redirect()->route('customer.dashboard');
             break;
         default:
             # code...
@@ -42,4 +38,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

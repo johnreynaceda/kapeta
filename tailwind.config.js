@@ -18,6 +18,7 @@ export default {
             fontFamily: {
                 sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
                 mont: ["Montserrat", ...defaultTheme.fontFamily.sans],
+                titan: ["Titan One"],
             },
         },
     },

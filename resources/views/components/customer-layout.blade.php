@@ -1,3 +1,6 @@
+<div>
+    <!-- You must be the change you wish to see in the world. - Mahatma Gandhi -->
+</div>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -20,12 +23,11 @@
 </head>
 
 <body class="font-sans antialiased ">
-
     <div class="relative z-50" x-data="{ darkMode: false, userDropdownOpen: false }" x-bind:class="{ 'dark': darkMode }">
         <!-- Page Container -->
         <div id="page-container" class="mx-auto flex min-h-screen w-full relative min-w-[320px] flex-col ">
             <!-- Page Header -->
-            <header id="page-header" class="z-1 flex flex-none items-center relative">
+            {{-- <header id="page-header" class="z-1 flex flex-none items-center relative">
                 <div class="relative container mx-auto px-4 lg:px-8 xl:max-w-7xl">
                     <div class="flex justify-between py-10">
                         <!-- Left Section -->
@@ -130,7 +132,7 @@
                         <!-- END Right Section -->
                     </div>
                 </div>
-            </header>
+            </header> --}}
 
             <main id="page-content" class="flex max-w-full flex-auto relative flex-col">
                 {{ $slot }}
@@ -142,6 +144,8 @@
         <x-svg.bg class="opacity-10 z-30" />
     </div>
     <x-notifications position="bottom-right" z-index="z-50" />
+
+
     @livewireScripts
 </body>
 

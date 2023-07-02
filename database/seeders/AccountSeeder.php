@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Store;
 
 class AccountSeeder extends Seeder
 {
@@ -19,11 +20,21 @@ class AccountSeeder extends Seeder
             'name' => 'Seller'
         ]);
 
+        $store = Store::create([
+            'name' => 'Brew Cafe',
+            'description' => 'Bew Cafe is a coffee shop that sells coffee and other beverages.',
+            'address' => 'Jl. Raya Kedung Baruk No.98, Kedung Baruk, Kec. Rungkut, Kota SBY, Jawa Timur 60298',
+            'opening_hour' => '08:00AM',
+            'closing_hour' => '10:00PM',
+            'phone_number' => '081234567890',
+        ]);
+
         $user = User::create([
             'name' => 'Seller',
             'email' => 'seller@gmail.com',
             'password' => bcrypt('password'),
-            'role_id' => $role->id
+            'role_id' => $role->id,
+            'store_id' => $store->id
         ]);
 
         $role = Role::create([
