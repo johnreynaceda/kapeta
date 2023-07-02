@@ -27,7 +27,7 @@
         <!-- Page Container -->
         <div id="page-container" class="mx-auto flex min-h-screen w-full relative min-w-[320px] flex-col ">
             <!-- Page Header -->
-            {{-- <header id="page-header" class="z-1 flex flex-none items-center relative">
+            <header id="page-header" class="z-1 flex flex-none items-center relative">
                 <div class="relative container mx-auto px-4 lg:px-8 xl:max-w-7xl">
                     <div class="flex justify-between py-10">
                         <!-- Left Section -->
@@ -57,13 +57,13 @@
                                 </a>
                                 <a href="{{ route('seller.product') }}"
                                     class="{{ request()->routeIs('seller.product') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
-                                    <span>Products</span>
+                                    <span>Locate Shops</span>
                                 </a>
                                 <a href="" class="hover:font-medium hover:text-red-600 flex space-x-1">
-                                    <span>Orders</span>
-                                    <span
-                                        class="px-2 bg-green-600 font-bold grid place-content-center text-white text-sm rounded-lg">25</span>
+                                    <span>My Orders</span>
                                 </a>
+
+                                <livewire:customer.cart />
                             </div>
                             <!-- END Search -->
 
@@ -87,7 +87,8 @@
                                 <!-- END Dropdown Toggle Button -->
 
                                 <!-- Dropdown -->
-                                <div x-show="userDropdownOpen" x-transition:enter="transition ease-out duration-100"
+                                <div x-show="userDropdownOpen" x-cloak
+                                    x-transition:enter="transition ease-out duration-100"
                                     x-transition:enter-start="transform opacity-0 scale-75"
                                     x-transition:enter-end="transform opacity-100 scale-100"
                                     x-transition:leave="transition ease-in duration-100"
@@ -96,7 +97,7 @@
                                     x-on:click.outside="userDropdownOpen = false" role="menu"
                                     aria-labelledby="dropdown-user"
                                     class="absolute right-0 z-50 mt-2 w-48 rounded shadow">
-                                    <div class=" rounded-2xl bg-white px-3 py-2 ring-opacity-5">
+                                    <div class=" rounded-2xl bg-white px-3  ring-opacity-5">
                                         <a role="menuitem" href="javascript:void(0)"
                                             class="flex items-center space-x-3 rounded-lg py-2 px-3 text-sm fill-gray-500 hover:font-medium hover:text-red-600 hover:fill-red-600 text-gray-500 hover:/50 ">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
@@ -132,7 +133,7 @@
                         <!-- END Right Section -->
                     </div>
                 </div>
-            </header> --}}
+            </header>
 
             <main id="page-content" class="flex max-w-full flex-auto relative flex-col">
                 {{ $slot }}
@@ -143,7 +144,7 @@
     <div class="fixed top-0 right-0  left-0 bottom-0">
         <x-svg.bg class="opacity-10 z-30" />
     </div>
-    <x-notifications position="bottom-right" z-index="z-50" />
+    <x-notifications z-index="z-50" />
 
 
     @livewireScripts

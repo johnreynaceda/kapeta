@@ -1,3 +1,3 @@
 <x-customer-layout>
-    {{-- <livewire:customer.customer-dashboard /> --}}
+    <livewire:customer.customer-dashboard />
 </x-customer-layout>

@@ -9,4 +9,14 @@ class Product extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function store()
+    {
+        return $this->belongsTo(Store::class);
+    }
+
+    public function ordes()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
