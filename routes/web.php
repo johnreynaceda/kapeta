@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    switch (auth()->user()->id) {
+    switch (auth()->user()->role_id) {
         case 1:
             return redirect()->route('seller.dashboard');
             break;

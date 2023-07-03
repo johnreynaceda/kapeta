@@ -33,7 +33,7 @@
                         <!-- Left Section -->
                         <div class="flex items-center relative space-x-2 lg:space-x-6">
                             <!-- Logo -->
-                            <a href="javascript:void(0)"
+                            <a href="{{ route('customer.dashboard') }}"
                                 class="group inline-flex text-xl items-center space-x-2 font-bold uppercase tracking-wider hover:fill-red-600 fill-gray-700 text-red-600 hover:text-gray-700 active:text-slate-200">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     class="h-6 w-6 -rotate-12  indigo-400 transition group-hover:rotate-0 group-active:opacity-50">
@@ -145,7 +145,7 @@
         <x-svg.bg class="opacity-10 z-30" />
     </div>
     <x-notifications z-index="z-50" />
-
+    <x-dialog z-index="z-50" blur="md" align="center" />
 
     @livewireScripts
 </body>

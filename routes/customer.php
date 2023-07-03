@@ -13,4 +13,12 @@ Route::prefix('customer')->middleware(['auth'])->group(function () {
         return view('customer.cart');
     })->name('customer.cart');
 
+    Route::get('/checkout', function () {
+        return view('customer.checkout');
+    })->name('customer.checkout');
+
+    Route::get('/placed-order', function () {
+        return view('customer.place-order');
+    })->name('customer.place-order');
+
 });
