@@ -21,4 +21,8 @@ Route::prefix('customer')->middleware(['auth'])->group(function () {
         return view('customer.place-order');
     })->name('customer.place-order');
 
+    Route::get('/my-orders', function () {
+        return view('customer.my-order');
+    })->name('customer.my-order');
+
 });

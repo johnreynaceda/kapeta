@@ -24,7 +24,7 @@ class Checkout extends Component
        )->toArray());
 
        $transaction = Transaction::create([
-            'store_id' => rand(10,100),
+            'store_id' => mt_rand(100000, 999999),
            'user_id' => auth()->user()->id,
            'total_amount' => $total,
            'status' => 0,

@@ -51,15 +51,16 @@
                         <div class="flex items-center relative space-x-2 lg:space-x-6">
                             <!-- Search -->
                             <div class="flex space-x-4 items-center">
-                                <a href="{{ route('seller.dashboard') }}"
-                                    class="{{ request()->routeIs('seller.dashboard') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
+                                <a href="{{ route('customer.dashboard') }}"
+                                    class="{{ request()->routeIs('customer.dashboard') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
                                     <span>Dashboard</span>
                                 </a>
-                                <a href="{{ route('seller.product') }}"
+                                <a href=""
                                     class="{{ request()->routeIs('seller.product') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
                                     <span>Locate Shops</span>
                                 </a>
-                                <a href="" class="hover:font-medium hover:text-red-600 flex space-x-1">
+                                <a href="{{ route('customer.my-order') }}"
+                                    class="{{ request()->routeIs('customer.my-order') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600 flex space-x-1">
                                     <span>My Orders</span>
                                 </a>
 
