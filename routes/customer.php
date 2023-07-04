@@ -25,4 +25,8 @@ Route::prefix('customer')->middleware(['auth'])->group(function () {
         return view('customer.my-order');
     })->name('customer.my-order');
 
+    Route::get('/my-profille', function () {
+        return view('customer.profile');
+    })->name('customer.profile');
+
 });

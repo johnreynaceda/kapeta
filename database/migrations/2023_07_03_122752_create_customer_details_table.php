@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,6 +15,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('address');
             $table->string('phone_number');
+            $table->string('profile_path')->nullable();
             $table->timestamps();
         });
     }

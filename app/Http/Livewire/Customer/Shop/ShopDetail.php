@@ -7,27 +7,30 @@ use App\Models\Store;
 use App\Models\Product;
 use App\Models\Order;
 use WireUi\Traits\Actions;
+
 class ShopDetail extends Component
 {
     use Actions;
     public $store_id;
 
-    public function mount(){
-        $id = request('name');
-        $this->store_id = $id[strlen($id)-1];
+    public function mount()
+    {
+        $id             = request('name');
+        $this->store_id = $id[strlen($id) - 1];
     }
 
     public function render()
     {
-        return view('livewire.customer.shop.shop-detail',[
+        return view('livewire.customer.shop.shop-detail', [
             'shop' => Store::where('id', $this->store_id)->first(),
-           'products' => Product::where('store_id', $this->store_id)->get(),
+            'products' => Product::where('store_id', $this->store_id)->get(),
         ]);
     }
 
-    public function addToCart($product_id){
-        $order = order::where('product_id', $product_id)->where('status', 0)->get();
-     
+    public function addToCart($product_id)
+    {
+        $order = order::where('product_id', $product_id)->where('status', 0)->where('transaction_id', null)->where('user_id', auth()->user()->id)->get();
+
         if ($order->count() == 1) {
             $order->first()->update([
                 'quantity' => $order->first()->quantity + 1,
@@ -37,7 +40,7 @@ class ShopDetail extends Component
                 $title = 'Product Addedd to Cart',
                 $description = 'Product has been added to your cart',
             );
-        }else{
+        } else {
             Order::create([
                 'user_id' => auth()->user()->id,
                 'product_id' => $product_id,
@@ -49,6 +52,6 @@ class ShopDetail extends Component
                 $description = 'Product has been added to your cart',
             );
         }
-        
+
     }
 }
