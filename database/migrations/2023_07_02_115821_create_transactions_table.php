@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('store_id');
+            $table->string('order_number');
             $table->foreignId('user_id');
             $table->double('total_amount');
             $table->integer('status')->default(1);

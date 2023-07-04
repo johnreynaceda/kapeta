@@ -57,10 +57,10 @@
                                     class="{{ request()->routeIs('seller.product') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
                                     <span>Products</span>
                                 </a>
-                                <a href="" class="hover:font-medium hover:text-red-600 flex space-x-1">
+                                <a href="{{ route('seller.order') }}"
+                                    class="{{ request()->routeIs('seller.order') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600 flex space-x-1">
                                     <span>Orders</span>
-                                    <span
-                                        class="px-2 bg-green-600 font-bold grid place-content-center text-white text-sm rounded-lg">25</span>
+
                                 </a>
                             </div>
                             <!-- END Search -->
@@ -74,7 +74,7 @@
                                     x-on:click="userDropdownOpen = true">
                                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=160&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=160"
                                         alt="User Avatar" class="inline-block h-8 w-8 rounded-full" />
-                                    <span class="hidden sm:inline-block">John Smith</span>
+                                    <span class="hidden sm:inline-block">{{ auth()->user()->name }}</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                         class="hi-solid hi-chevron-down inline-block h-5 w-5 text-slate-600">
                                         <path fill-rule="evenodd"
@@ -86,7 +86,7 @@
 
                                 <!-- Dropdown -->
                                 <div x-show="userDropdownOpen" x-transition:enter="transition ease-out duration-100"
-                                    x-transition:enter-start="transform opacity-0 scale-75"
+                                    x-cloak x-transition:enter-start="transform opacity-0 scale-75"
                                     x-transition:enter-end="transform opacity-100 scale-100"
                                     x-transition:leave="transition ease-in duration-100"
                                     x-transition:leave-start="transform opacity-100 scale-100"

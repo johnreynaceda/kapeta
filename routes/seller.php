@@ -8,5 +8,12 @@ Route::get('/product', function(){
     return view('seller.product.index');
     })->name('seller.product');
 
+    Route::get('/orders', function(){
+        return view('seller.order.index');
+        })->name('seller.order');
+
+        Route::get('/orders/{id}', function(){
+            return view('seller.order.manage');
+            })->name('seller.order-manage');
 
 });
