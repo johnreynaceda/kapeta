@@ -29,4 +29,8 @@ Route::prefix('customer')->middleware(['auth'])->group(function () {
         return view('customer.profile');
     })->name('customer.profile');
 
+    Route::get('/locate-shops', function () {
+        return view('customer.locate-shops');
+    })->name('customer.location');
+
 });
