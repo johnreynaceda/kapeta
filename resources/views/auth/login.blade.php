@@ -67,6 +67,8 @@
                                         <img src="{{ asset('images/kapetalogo.png') }}" class="h-20" alt="">
                                     </p>
                                     <p class="mt-2 font-bold text-red-600">Sign In to your Account</p>
+                                    <p>Don't have an account? <a class="hover:text-red-600 underline"
+                                            href="{{ route('register') }}">Click here!</a></p>
                                 </div>
                                 <div class="flex flex-col items-center border-t border-main gap-3 mt-5  lg:flex-row">
                                     {{-- <a class="inline-flex items-center justify-center w-full px-6 py-4 text-center text-white duration-200 bg-indigo-500 border-2 border-indigo-500 focus:outline-none focus-visible:outline-black focus-visible:ring-black hover:bg-transparent hover:border-indigo-500 hover:text-indigo-500 lg:w-auto rounded-xl" href="#"><svg class="icon icon-tabler icon-tabler-brand-chrome" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" height="24" width="24">

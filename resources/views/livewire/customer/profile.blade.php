@@ -10,7 +10,7 @@
                                 <img class="h-20 w-20 ring-2 ring-red-600 object-cover rounded-full"
                                     src="{{ $photo->temporaryUrl() }}" />
                             @else
-                                <img class="h-20 w-20 ring-2 ring-red-600 rounded-full"
+                                <img class="h-20 w-20 ring-2 object-cover ring-red-600 rounded-full"
                                     src="{{ Storage::url(auth()->user()->customerDetail->profile_path) }}" />
                             @endif
                             <div class="absolute bottom-0 -right-1">

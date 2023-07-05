@@ -3,13 +3,13 @@
         <div>
             <div class="border-x pb-10 border-b-2 shadow rounded-xl overflow-hidden">
                 <div class="h-40 relative rounded-t-xl">
-                    <img src="https://plus.unsplash.com/premium_photo-1661757525277-6c4c60829859?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                        alt="" class="h-full w-full  object-cover rounded-t-xl">
+                    <img src="{{ Storage::url($shop->background_path) }}" alt=""
+                        class="h-full w-full  object-cover rounded-t-xl">
                     <div class="absolute bg-gradient-to-t from-gray-600  top-0 w-full h-full"></div>
                 </div>
                 <div class="div -my-10 mx-6 flex space-x-4 items-end relative">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=160&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=160"
-                        alt="" class="h-24 w-24 bg-blue-400 ring-4 ring-red-600 rounded-full">
+                    <img src="{{ $shop->profile_path == null ? 'https://ui-avatars.com/api/?name=' . $shop->name . '&color=7F9CF5&background=EBF4FF' : asset('storage/' . $shop->profile_path) }}"
+                        alt="" class="h-24 w-24 bg-blue-400 ring-4 ring-red-600 rounded-full object-cover">
                     <div class="flex flex-col">
                         <span class="font-titan uppercase text-gray-600 text-xl">{{ $shop->name }}</span>
                         <div class="flex items-center space-x-2">

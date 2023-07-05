@@ -72,8 +72,8 @@
                                     class="inline-flex relative items-center   justify-center space-x-3 rounded-full bg-slate-50 border px-3 py-2 text-sm font-medium leading-5 text-gray-600  hover:text-gray-700 focus:outline-none focus:ring focus:ring-slate-500 focus:ring-opacity-50"
                                     id="dropdown-user" aria-haspopup="true" x-bind:aria-expanded="userDropdownOpen"
                                     x-on:click="userDropdownOpen = true">
-                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=160&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=160"
-                                        alt="User Avatar" class="inline-block h-8 w-8 rounded-full" />
+                                    <img src="{{ auth()->user()->store->profile_path == null ? 'https://ui-avatars.com/api/?name=' . auth()->user()->store->name . '&color=7F9CF5&background=EBF4FF' : asset('storage/' . auth()->user()->store->profile_path) }}"
+                                        alt="User Avatar" class="inline-block h-8 w-8 rounded-full object-cover" />
                                     <span class="hidden sm:inline-block">{{ auth()->user()->name }}</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                         class="hi-solid hi-chevron-down inline-block h-5 w-5 text-slate-600">

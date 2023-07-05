@@ -79,7 +79,8 @@
                 <h1 class="text-3xl font-titan text-red-600">Your Order was successfully placed!</h1>
                 <p class="mt-2">Enjoy the rich flavors of our freshley brewed coffee, made just for you.</p>
                 <div class="mt-10">
-                    <x-button label="GO TO MY ORDERS" negative class="font-bold w-64" rounded />
+                    <x-button label="GO TO MY ORDERS" href="{{ route('customer.my-order') }}" negative
+                        class="font-bold w-64" rounded />
                 </div>
             </div>
 

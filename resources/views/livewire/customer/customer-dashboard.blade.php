@@ -19,7 +19,8 @@
                         </div>
                         <div class="div -my-10 mx-6 flex space-x-2 items-end relative">
                             <img src="{{ $store->profile_path == null ? 'https://ui-avatars.com/api/?name=' . $store->name . '&color=7F9CF5&background=EBF4FF' : asset('storage/' . $store->profile_path) }}"
-                                alt="" class="h-24 w-24 bg-blue-400 ring-4 ring-red-600 rounded-full">
+                                alt=""
+                                class="h-24 w-24 bg-blue-400 ring-4 ring-red-600 rounded-full object-cover">
                             <div class="flex flex-col">
                                 <span class="font-titan uppercase text-gray-600 text-xl">{{ $store->name }}</span>
                                 <div class="flex items-center space-x-2">
