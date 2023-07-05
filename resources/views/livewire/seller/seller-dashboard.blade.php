@@ -25,7 +25,8 @@
                     </svg>
                 </div>
                 <div class="">
-                    <span class="text-3xl font-bold text-gray-700">1</span>
+                    <span
+                        class="text-3xl font-bold text-gray-700">{{ \App\Models\Transaction::where('store_id', auth()->user()->store_id)->where('status', 1)->count() }}</span>
                 </div>
                 <div class="absolute -right-2 -bottom-10">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -46,7 +47,8 @@
                     </svg>
                 </div>
                 <div class="">
-                    <span class="text-3xl font-bold text-gray-700">0</span>
+                    <span
+                        class="text-3xl font-bold text-gray-700">{{ \App\Models\Transaction::where('store_id', auth()->user()->store_id)->where('status', 0)->count() }}</span>
                 </div>
                 <div class="absolute -right-2 -bottom-10">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -67,7 +69,8 @@
                     </svg>
                 </div>
                 <div class="">
-                    <span class="text-3xl font-bold text-gray-700">0</span>
+                    <span
+                        class="text-3xl font-bold text-gray-700">{{ \App\Models\Transaction::where('store_id', auth()->user()->store_id)->where('status', 2)->count() }}</span>
                 </div>
                 <div class="absolute -right-2 -bottom-10">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"

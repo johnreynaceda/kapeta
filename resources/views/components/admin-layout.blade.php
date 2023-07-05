@@ -95,7 +95,7 @@
                                     aria-labelledby="dropdown-user"
                                     class="absolute right-0 z-50 mt-2 w-48 rounded shadow">
                                     <div class=" rounded-2xl bg-white px-3 py-2 ring-opacity-5">
-                                        <a role="menuitem" href="javascript:void(0)"
+                                        <a role="menuitem" href="{{ route('seller.profile') }}"
                                             class="flex items-center space-x-3 rounded-lg py-2 px-3 text-sm fill-gray-500 hover:font-medium hover:text-red-600 hover:fill-red-600 text-gray-500 hover:/50 ">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5">
                                                 <path

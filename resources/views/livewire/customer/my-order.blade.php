@@ -12,7 +12,23 @@
                         <div class="flex space-x-2 items-center">
                             <span class="text-sm">{{ \Carbon\Carbon::parse($item->created_at)->format('F d, Y') }}</span>
                             <span>|</span>
-                            <span class="text-sm font-medium text-red-600">COMPLETED</span>
+                            <span class="text-sm font-medium text-red-600">
+                                @switch($item->status)
+                                    @case(0)
+                                        PENDING
+                                    @break
+
+                                    @case(1)
+                                        COMPLETED
+                                    @break
+
+                                    @case(2)
+                                        CANCELLED
+                                    @break
+
+                                    @default
+                                @endswitch
+                            </span>
                         </div>
                     </header>
                     @foreach ($item->orders as $order)
@@ -39,8 +55,8 @@
                     </div>
                 </div>
 
-            @empty
-            @endforelse
+                @empty
+                @endforelse
+            </div>
         </div>
     </div>
-</div>
