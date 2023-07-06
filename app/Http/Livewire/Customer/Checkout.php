@@ -18,9 +18,9 @@ class Checkout extends Component
     public function placeOrder()
     {
         $orders = Order::where('user_id', auth()->user()->id)->where('status', 0)->get();
-        $store = $orders->groupBy('store_id');
+        $store  = $orders->groupBy('store_id');
         foreach ($store as $key => $value) {
-            $total  = array_sum($value->map(
+            $total       = array_sum($value->map(
                 function ($q) {
                     return $q->product->price * $q->quantity;
                 }
@@ -39,8 +39,9 @@ class Checkout extends Component
                 ]);
             }
         }
-        $this->emit('cart');
         return redirect()->route('customer.place-order');
+
+
         // $orders = Order::where('user_id', auth()->user()->id)->where('status', 0)->get();
         // $total  = array_sum($orders->map(
         //     function ($q) {
