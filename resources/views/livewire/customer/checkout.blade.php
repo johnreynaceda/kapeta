@@ -64,7 +64,13 @@
                         <tr class="">
                             <td colspan="6" class="text-right pr-2 py-2">TOTAL({{ $item->count() }} item):
                             </td>
-                            <td>&#8369;{{ number_format($item->sum('product.price'), 2) }}</td>
+                            <td>&#8369;{{ number_format(
+                                $item->map(function ($item) {
+                                        return $item->product->price * $item->quantity;
+                                    })->sum(),
+                                2,
+                            ) }}
+                            </td>
 
                         </tr>
 

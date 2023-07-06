@@ -28,6 +28,11 @@
                 </div>
                 <div class="col-span-2">
                     <x-input label="Address" wire:model="shop_address" placeholder="" />
+                    <div class=" border rounded-lg px-2 mt-0.5">
+                        <p class="text-red-500 text-xs italic">We recommend using address from google map for better
+                            accuracy.
+                        </p>
+                    </div>
                 </div>
                 <x-input label="Opening Hour" wire:model="shop_opening" placeholder="" />
                 <x-input label="Closing Hour" wire:model="shop_closing" placeholder="" />
@@ -36,10 +41,16 @@
                 <div>
                     <label for="">Profile Photo</label>
                     <input type="file" wire:model="shop_image" name="" id="">
+                    @error('shop_image')
+                        <span class="error text-sm text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div>
                     <label for="">Banner Photo</label>
                     <input type="file" wire:model="shop_banner" name="" id="">
+                    @error('shop_banner')
+                        <span class="error text-sm text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             <div class="mt-4 flex justify-end">
@@ -60,6 +71,9 @@
                 <div>
                     <label for="">Profile Photo</label>
                     <input type="file" wire:model="image" name="image" id="">
+                    @error('image')
+                        <span class="error text-sm text-red-600">{{ $message }}</span>
+                    @enderror
                 </div>
 
             </div>

@@ -16,7 +16,7 @@ class Register extends Component
 
     //seller
     public $shop_name, $shop_number, $shop_address, $shop_description, $shop_image, $shop_banner, $shop_email, $shop_password, $shop_opening, $shop_closing;
-    
+
     //customer
     public $name, $email, $password, $phone, $address, $image;
     public function render()
@@ -24,9 +24,22 @@ class Register extends Component
         return view('livewire.register');
     }
 
-    public function registerUser(){
+    public function registerUser()
+    {
         if ($this->register_as == 1) {
-           DB::beginTransaction();
+            DB::beginTransaction();
+            $this->validate([
+                'shop_name' => 'required',
+                'shop_number' => 'required',
+                'shop_address' => 'required',
+                'shop_description' => 'required',
+                'shop_image' => 'required|image',
+                'shop_banner' => 'required|image',
+                'shop_email' => 'required|email|unique:users,email',
+                'shop_password' => 'required',
+                'shop_opening' => 'required',
+                'shop_closing' => 'required',
+            ]);
             $shop = Store::create([
                 'name' => $this->shop_name,
                 'description' => $this->shop_description,
@@ -34,7 +47,7 @@ class Register extends Component
                 'opening_hour' => $this->shop_opening,
                 'closing_hour' => $this->shop_closing,
                 'phone_number' => $this->shop_number,
-                'profile_path' => $this->shop_image->store('profile','public'),
+                'profile_path' => $this->shop_image->store('profile', 'public'),
                 'background_path' => $this->shop_banner->store('banner', 'public'),
             ]);
             $user = User::create([
@@ -45,10 +58,18 @@ class Register extends Component
                 'store_id' => $shop->id,
             ]);
             DB::commit();
-           auth()->loginUsingId($user->id);
-           return redirect()->route('dashboard');
-        }else{
+            auth()->loginUsingId($user->id);
+            return redirect()->route('dashboard');
+        } else {
             DB::beginTransaction();
+            $this->validate([
+                'name' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'image' => 'required|image',
+            ]);
             $user = User::create([
                 'name' => $this->name,
                 'email' => $this->email,
@@ -63,8 +84,8 @@ class Register extends Component
                 'profile_path' => $this->image->store('profile', 'public'),
             ]);
             DB::commit();
-             auth()->loginUsingId($user->id);
-           return redirect()->route('dashboard');
+            auth()->loginUsingId($user->id);
+            return redirect()->route('dashboard');
         }
     }
 }
