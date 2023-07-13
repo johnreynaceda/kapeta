@@ -1,6 +1,6 @@
 <div>
     <div class="container relative mx-auto space-y-10 px-4 py-8 lg:space-y-10 lg:px-8 lg:py-5 xl:max-w-7xl">
-        <header class="text-xl text-red-600 font-titan">ORDER #: {{ $transactions->store_id }}</header>
+        <header class="text-xl text-red-600 font-titan">ORDER #: {{ $transactions->order_number }}</header>
         <div class="flex space-x-5">
             <div class="flex-1">
                 <div>

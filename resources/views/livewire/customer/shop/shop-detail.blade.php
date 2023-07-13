@@ -73,16 +73,15 @@
                                     <h3 class="text-xl font-semibold text-white">
                                         {{ $product->name }}
                                     </h3>
+                                    <div class="mt-2">
+                                        <p class="text-xs truncate w-40 text-gray-50">{{$product->description}}ahjsdasdgdgsdjsdjhsdjhgsdahsdjhsadkshd</p>
+                                    </div>
                                     <p class="text-sm font-semibold text-slate-400">
                                         &#8369;{{ number_format($product->price, 2) }}</p>
                                 </div>
                                 <div
                                     class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-500/25 text-slate-400 fill-white transition group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white group-active:scale-100">
-                                    {{-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                    class="hi-mini hi-play h-5 w-5 translate-x-0.5">
-                    <path
-                        d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                </svg> --}}
+
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 translate-x-0.5"
                                         viewBox="0 0 24 24">
                                         <path

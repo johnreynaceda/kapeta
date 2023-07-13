@@ -25,7 +25,7 @@
                 @foreach ($transactions as $item)
                     <tr class="border-b">
                         <td class="text-left px-2 text-sm font-medium text-gray-500 py-2">
-                            {{ $item->store_id }}</td>
+                            {{ $item->order_number }}</td>
                         <td class="text-left px-2 text-sm font-medium text-gray-500 py-2">
                             {{ $item->user->name }}</td>
                         <td class="text-left px-2 text-sm font-medium text-gray-500 py-2">

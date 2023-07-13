@@ -10,7 +10,7 @@ class MyOrder extends Component
     public function render()
     {
         return view('livewire.customer.my-order',[
-            'transactions' => Transaction::where('user_id', auth()->user()->id)->get(),
+            'transactions' => Transaction::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get(),
         ]);
     }
 }

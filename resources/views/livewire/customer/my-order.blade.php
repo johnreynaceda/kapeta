@@ -8,7 +8,7 @@
             @forelse ($transactions as $item)
                 <div class=" border my-2 p-5 shadow">
                     <header class="text-bold flex justify-between items-center"> <span>ORDER:
-                            {{ $item->store_id }}</span>
+                            {{ $item->order_number }}</span>
                         <div class="flex space-x-2 items-center">
                             <span class="text-sm">{{ \Carbon\Carbon::parse($item->created_at)->format('F d, Y') }}</span>
                             <span>|</span>
@@ -37,7 +37,7 @@
                                 <img src="{{ Storage::url($order->product->image_path) }}" class="h-12 rounded-lg w-12"
                                     alt="">
                                 <div class="flex-1">
-                                    <h1 class="font-medium text-lg">{{ $order->product->name }}</h1>
+                                    <h1 class="font-medium text-gray-700 uppercase text-lg">{{ $order->product->name }}</h1>
                                     <flex class="flex justify-between">
                                         <h1>x{{ $order->quantity }}</h1>
                                         <h1 class="font-medium text-red-600">

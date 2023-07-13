@@ -13,12 +13,12 @@
                                     d="M21 13V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V13H2V11L3 6H21L22 11V13H21ZM5 13V19H19V13H5ZM6 14H14V17H6V14ZM3 3H21V5H3V3Z">
                                 </path>
                             </svg>
-                            <span class="font-bold font-mont">{{ App\Models\Store::find($key)->name }}</span>
+                            <span class="font-bold uppercase font-mont">{{ App\Models\Store::find($key)->name }}</span>
                         </div>
                         @forelse ($item as  $order)
                             <div class="mt-2 border-t p-2">
                                 <div class="flex justify-between items-center">
-                                    <div class="flex space-x-2 items-center">
+                                    <div class="flex space-x-2 items-center  w-96">
                                         <img src="{{ Storage::url($order->product->image_path) }}"
                                             class="h-12 rounded w-12" alt="">
                                         <div>

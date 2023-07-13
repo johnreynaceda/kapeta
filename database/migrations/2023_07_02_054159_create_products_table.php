@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('store_id');
             $table->string('name');
             $table->double('price');
+            $table->longText('description')->nullable();
             $table->string('category');
             $table->string('status')->default('In Stock');
             $table->string('image_path')->nullable();
