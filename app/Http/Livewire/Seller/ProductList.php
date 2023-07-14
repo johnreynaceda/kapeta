@@ -109,7 +109,6 @@ class ProductList extends Component
             'description' => 'required',
             'category' => 'required',
             'status' => 'required',
-            'image_path' => 'required',
 
         ]);
 

@@ -30,8 +30,15 @@ class ShopDetail extends Component
     public function addToCart($product_id)
     {
         $order = order::where('product_id', $product_id)->where('status', 0)->where('transaction_id', null)->where('user_id', auth()->user()->id)->get();
+        // dd(Product::where('id', $product_id)->first());
 
-        if ($order->count() == 1) {
+        if (Product::where('id', $product_id)->first()->status == 'No Stock') {
+            $this->notification()->error(
+                $title = 'Product Out of Stock',
+                $description = 'Product is out of stock',
+            );
+        }else{
+               if ($order->count() == 1) {
             $order->first()->update([
                 'quantity' => $order->first()->quantity + 1,
             ]);
@@ -52,6 +59,8 @@ class ShopDetail extends Component
                 $description = 'Product has been added to your cart',
             );
         }
+        }
+
 
     }
 }
