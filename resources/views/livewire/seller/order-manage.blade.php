@@ -55,7 +55,6 @@
                                                 return $item->product->price * $item->quantity;
                                             }
                                         )->sum(), 2
-
                                         ) }}
                                     </div>
                                 </td>

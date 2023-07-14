@@ -135,13 +135,13 @@
                 </h2>
                 <a href="javascript:void(0)"
                     class="group flex items-center space-x-1 text-sm text-slate-400 transition hover:text-red-600 active:text-slate-400">
-                    <span>See All</span>
+                    {{-- <span>See All</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                         class="h-5 w-5 opacity-50 transition ease-out group-hover:opacity-100 group-active:translate-x-2">
                         <path fill-rule="evenodd"
                             d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
                             clip-rule="evenodd" />
-                    </svg>
+                    </svg> --}}
                 </a>
             </div>
             <nav class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
@@ -199,13 +199,13 @@
                 </h2>
                 <a href="javascript:void(0)"
                     class="group flex items-center space-x-1 text-sm text-slate-400 transition hover:text-red-600 active:text-slate-400">
-                    <span>See All</span>
+                    {{-- <span>See All</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                         class="h-5 w-5 opacity-50 transition ease-out group-hover:opacity-100 group-active:translate-x-2">
                         <path fill-rule="evenodd"
                             d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
                             clip-rule="evenodd" />
-                    </svg>
+                    </svg> --}}
                 </a>
             </div>
             <nav class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
@@ -234,6 +234,7 @@
                                     <p class="text-sm font-semibold text-slate-400">
                                         &#8369;{{ number_format($product->price, 2) }}</p>
                                 </div>
+                                {{$product->totalQuantity}}
                                 <div
                                     class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-500/25 text-slate-400 fill-white transition group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white group-active:scale-100">
 
