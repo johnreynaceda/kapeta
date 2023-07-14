@@ -15,15 +15,17 @@ class SellerDashboard extends Component
         $this->store_data = auth()->user()->store;
         return view('livewire.seller.seller-dashboard',[
             'products' => Product::where('store_id', auth()->user()->store->id)->get()->take(3),
-            'hot_sales' => Product::where('store_id', auth()->user()->store->id)->with('orders')->whereHas('orders', function($k){
-                $k->whereHas('transaction', function($q){
+            'hot_sales' => Product::where('store_id', auth()->user()->store->id)
+            ->with(['orders' => function ($query) {
+                $query->whereHas('transaction', function ($q) {
                     $q->where('status', 1);
                 });
-            })->get()->sortByDesc(
-                function($query){
-                    return $query->orders->pluck('quantity')->sum();
-                }
-            )->take(3),
+            }])
+            ->get()
+            ->sortByDesc(function ($product) {
+                return $product->orders->sum('quantity');
+            })
+            ->take(3),
 
 
         ]);

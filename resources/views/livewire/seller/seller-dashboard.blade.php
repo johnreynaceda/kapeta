@@ -256,6 +256,9 @@
                 <!-- END Movie -->
             </nav>
 
+            {{-- @foreach ($hot_sales as $item)
+                {{$item->name}} - {{$item->orders->sum('quantity')}}
+            @endforeach --}}
         </section>
     </div>
 </div>
