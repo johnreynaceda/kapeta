@@ -50,7 +50,13 @@
                                 <td colspan="6">
                                     <div class="flex justify-end text-red-600  font-medium">
                                         TOTAL:
-                                        &#8369;{{ number_format($orders->sum('product.price'), 2) }}
+                                        &#8369;{{ number_format($orders->map(
+                                            function ($item) {
+                                                return $item->product->price * $item->quantity;
+                                            }
+                                        )->sum(), 2
+
+                                        ) }}
                                     </div>
                                 </td>
                             </tr>

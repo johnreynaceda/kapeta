@@ -41,7 +41,7 @@
                                     <flex class="flex justify-between">
                                         <h1>x{{ $order->quantity }}</h1>
                                         <h1 class="font-medium text-red-600">
-                                            ₱{{ number_format($order->product->price, 2) }}
+                                            ₱{{ number_format($order->product->price * $order->quantity, 2) }}
                                         </h1>
                                     </flex>
                                 </div>
