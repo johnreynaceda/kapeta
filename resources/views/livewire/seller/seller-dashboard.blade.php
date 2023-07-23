@@ -3,6 +3,8 @@
         <p class="font-titan text-lg text-red-500">
             Hello/Welcome Barista! See what you've got today.
         </p>
+
+
         <div class="flex space-x-2 items-center">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-amber-900">
                 <path
@@ -136,12 +138,11 @@
                 <h2 class="text-xl font-semibold text-red-600">
                     SALES GRAPH
                 </h2>
-                <a href="javascript:void(0)"
-                    class="group flex items-center space-x-1 text-sm text-slate-400 transition hover:text-red-600 active:text-slate-400">
-                </a>
+                <x-button label="view sales" wire:click="$set('sale_modal', true)" negative rounded
+                    right-icon="arrow-right" />
             </div>
             <div class="mt-2">
-                <livewire:admin.charts/>
+                <livewire:admin.charts />
             </div>
 
         </section>
@@ -201,9 +202,9 @@
                         </div>
                     </div>
                 @empty
-                <div>
-                    <h1 class="  text-gray-600">No Products Yet!</h1>
-                </div>
+                    <div>
+                        <h1 class="  text-gray-600">No Products Yet!</h1>
+                    </div>
                 @endforelse
                 <!-- END Movie -->
             </nav>
@@ -251,7 +252,7 @@
                                     <p class="text-sm font-semibold text-slate-400">
                                         &#8369;{{ number_format($product->price, 2) }}</p>
                                 </div>
-                                {{$product->totalQuantity}}
+                                {{ $product->totalQuantity }}
                                 <div
                                     class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-500/25 text-slate-400 fill-white transition group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white group-active:scale-100">
 
@@ -266,9 +267,9 @@
                         </div>
                     </div>
                 @empty
-                <div>
-                    <h1 class="  text-gray-600">No Products Yet!</h1>
-                </div>
+                    <div>
+                        <h1 class="  text-gray-600">No Products Yet!</h1>
+                    </div>
                 @endforelse
                 <!-- END Movie -->
             </nav>
@@ -278,4 +279,28 @@
             @endforeach --}}
         </section>
     </div>
+    <x-modal wire:model.defer="sale_modal">
+
+        <x-card title="Sales">
+
+            @foreach ($total_sales as $item)
+                <p>{{ \Carbon\Carbon::parse($item->date)->format('F d, Y') }} -
+                    &#8369;{{ number_format($item->total_sales, 2) }}</p>
+            @endforeach
+
+
+
+            <x-slot name="footer">
+
+                <div class="flex justify-end gap-x-4">
+
+                    <x-button rounded label="Cancel" x-on:click="close" />
+
+                </div>
+
+            </x-slot>
+
+        </x-card>
+
+    </x-modal>
 </div>

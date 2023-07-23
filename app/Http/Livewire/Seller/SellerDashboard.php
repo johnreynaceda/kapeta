@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Seller;
 
+use App\Models\Transaction;
 use Livewire\Component;
 use App\Models\Store;
 use App\Models\Product;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class SellerDashboard extends Component
 {
+    public $sale_modal = false;
     public $store_data = [];
     public function render()
     {
@@ -26,7 +28,12 @@ class SellerDashboard extends Component
                 return $product->orders->sum('quantity');
             })
             ->take(3),
-
+            'total_sales' => Transaction::selectRaw('DATE(created_at) as date, SUM(total_amount) as total_sales')
+            ->where('store_id', auth()->user()->store->id)
+            ->where('status', 1)
+            ->groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get(),
 
         ]);
     }

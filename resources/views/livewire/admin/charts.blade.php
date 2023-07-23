@@ -1,19 +1,19 @@
 <div>
-    <div style="width: 80%; margin: 0 auto;">
+    <div style=" margin: 0 auto;">
         <canvas id="salesChart" width="400" height="200"></canvas>
     </div>
 
     <script>
-        document.addEventListener('livewire:load', function () {
+        document.addEventListener('livewire:load', function() {
             // Convert PHP array to JavaScript object
             var chartData = @json($datas);
 
             // Get the labels (dates) and data (sum of total_amount) from the chartData
-            var labels = chartData.map(function (item) {
+            var labels = chartData.map(function(item) {
                 return item.date;
             });
 
-            var data = chartData.map(function (item) {
+            var data = chartData.map(function(item) {
                 return item.sum;
             });
 
