@@ -19,5 +19,8 @@ Route::prefix('seller')->middleware(['auth'])->group(function () {
     Route::get('/profile', function () {
         return view('seller.profile');
     })->name('seller.profile');
+    Route::get('/quick-reports', function () {
+        return view('seller.reports');
+    })->name('seller.reports');
 
 });

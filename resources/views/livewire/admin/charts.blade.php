@@ -1,46 +1,52 @@
 <div>
-    <div style=" margin: 0 auto;">
-        <canvas id="salesChart" width="400" height="200"></canvas>
+    <div>
+        <canvas id="barChart" width="800" height="400"></canvas>
     </div>
-
     <script>
-        document.addEventListener('livewire:load', function() {
-            // Convert PHP array to JavaScript object
-            var chartData = @json($datas);
+        var data = @json($datas);
 
-            // Get the labels (dates) and data (sum of total_amount) from the chartData
-            var labels = chartData.map(function(item) {
-                return item.date;
-            });
+        // Prepare data for Chart.js
+        var labels = Object.keys(data);
+        var values = Object.values(data);
 
-            var data = chartData.map(function(item) {
-                return item.sum;
-            });
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
-            // Create a new Chart.js bar chart
-            new Chart(document.getElementById('salesChart'), {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Sales',
-                        data: data,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        x: {
-                            beginAtZero: true
-                        },
-                        y: {
-                            beginAtZero: true
-                        }
+        var colors = [];
+        for (var i = 0; i < labels.length; i++) {
+            colors.push(getRandomColor());
+        }
+
+
+        var ctx = document.getElementById('barChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total Orders',
+                    data: values,
+                    backgroundColor: colors, // Use random colors array here
+                    borderColor: colors.map(color => color.replace('0.5',
+                        '1')), // Add full opacity to border
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        stepSize: 10, // Set the interval to 10
+                        suggestedMin: 0, // Set the minimum value for the Y-axis
                     }
                 }
-            });
+            }
         });
     </script>
 </div>

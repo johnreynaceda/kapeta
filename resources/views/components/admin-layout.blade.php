@@ -54,6 +54,10 @@
                                     class="{{ request()->routeIs('seller.dashboard') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
                                     <span>Home</span>
                                 </a>
+                                <a href="{{ route('seller.reports') }}"
+                                    class="{{ request()->routeIs('seller.reports') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
+                                    <span>Quick Report</span>
+                                </a>
                                 <a href="{{ route('seller.product') }}"
                                     class="{{ request()->routeIs('seller.product') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
                                     <span>Products</span>
@@ -61,7 +65,9 @@
                                 <a href="{{ route('seller.order') }}"
                                     class="{{ request()->routeIs('seller.order') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600 flex space-x-1">
                                     <span>Orders</span>
-                                    <x-badge label="{{\App\Models\Transaction::where('store_id', auth()->user()->store_id)->where('status',0)->count()}}" positive sm/>
+                                    <x-badge
+                                        label="{{ \App\Models\Transaction::where('store_id', auth()->user()->store_id)->where('status', 0)->count() }}"
+                                        positive sm />
                                 </a>
                             </div>
                             <!-- END Search -->
