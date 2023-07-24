@@ -11,6 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Scripts -->
     @wireUiScripts
@@ -51,7 +52,7 @@
                             <div class="flex space-x-4 items-center">
                                 <a href="{{ route('seller.dashboard') }}"
                                     class="{{ request()->routeIs('seller.dashboard') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
-                                    <span>Dashboard</span>
+                                    <span>Home</span>
                                 </a>
                                 <a href="{{ route('seller.product') }}"
                                     class="{{ request()->routeIs('seller.product') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">

@@ -72,7 +72,7 @@
                         <option value="2">Cancelled</option>
                     </x-native-select>
                     <div class="mt-3">
-                        <x-button label="UPDATE" wire:click="updateOrder" spinner="updateOrder" class="w-full font-bold"
+                        <x-button label="DONE" wire:click="updateOrder" spinner="updateOrder" class="w-full font-bold"
                             sm negative rounded />
                     </div>
                 </div>

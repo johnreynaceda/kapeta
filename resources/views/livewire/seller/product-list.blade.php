@@ -75,6 +75,9 @@
                         </div>
                         <div class="cols-span-2">
                             <input type="file" wire:model="image_path" class="w-full" />
+                            <div class="mt-0.5">
+                                <p class="text-sm text-red-400">*Upload Image for Thumbnail*</p>
+                            </div>
                         </div>
                         <div class="col-span-2">
                             @if ($image)
@@ -119,6 +122,9 @@
                         </div>
                         <div class="cols-span-2">
                             <input type="file" wire:model="image_path" class="w-full" />
+                            <div class="mt-0.5">
+                                <p class="text-sm text-red-400">*Upload Image for Thumbnail*</p>
+                            </div>
                         </div>
                         <div class="col-span-2">
                             @if ($image)

@@ -54,7 +54,7 @@
                             <div class="flex space-x-4 items-center">
                                 <a href="{{ route('customer.dashboard') }}"
                                     class="{{ request()->routeIs('customer.dashboard') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">
-                                    <span>Dashboard</span>
+                                    <span>Home</span>
                                 </a>
                                 <a href="{{ route('customer.location') }}"
                                     class="{{ request()->routeIs('customer.location') ? 'text-red-600 font-medium' : '' }} hover:font-medium hover:text-red-600">

@@ -1,5 +1,8 @@
 <div>
     <div class="container relative mx-auto space-y-10 px-4 py-8 lg:space-y-10 lg:px-8 lg:py-10 xl:max-w-7xl">
+        <p class="font-titan text-lg text-red-500">
+            Hello/Welcome, Mangape diay ta!
+        </p>
         <header class="flex items-center space-x-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-red-600">
                 <path
