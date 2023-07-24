@@ -78,7 +78,7 @@
         var productLabels = @json($productLabels);
         var totalSoldData = @json($totalSoldData);
 
-        $backgroundColor = ['#546FC6', '#91CD77', '#FBC958'];
+        $backgroundColor = ['#546FC6', '#91CD77', '#FBC958', '1B1B1B', 'DC2626'];
         // Create a bar chart
         var ctx = document.getElementById('barChart').getContext('2d');
         var barChart = new Chart(ctx, {

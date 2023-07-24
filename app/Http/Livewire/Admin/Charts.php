@@ -31,7 +31,7 @@ class Charts extends Component
             $query->where('status', 1);
         })
             ->orderByDesc('total_sold')
-            ->take(3);
+            ->take(5);
 
         // Prepare data for the bar graph
         $this->productLabels = $topSoldProducts->pluck('name')->toArray();
@@ -39,12 +39,12 @@ class Charts extends Component
 
         return view('livewire.admin.charts', [
             'hot_sales' => Product::where('store_id', auth()->user()->store->id)
-                ->with(['orders' => function ($query) {
+                ->whereHas('orders', function ($query) {
                     $query->whereHas('transaction', function ($q) {
                         $q->where('status', 1);
                     });
-                }])
-                ->get()
+                })
+                ->get()->take(3)
                 ->sortByDesc(function ($product) {
                     return $product->orders->sum('quantity');
                 }),
