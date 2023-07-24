@@ -27,7 +27,7 @@ class Charts extends Component
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('orders.created_at', '>=', now()->subDays(7))
             ->groupBy('products.id', 'products.name')->whereHas('transaction', function ($query) {
-            $query->where('status', 1);
+            $query->where('status', 1)->where('store_id', auth()->user()->store_id);
         })
             ->orderByDesc('total_sold')
             ->take(5);
@@ -40,7 +40,7 @@ class Charts extends Component
             'hot_sales' => Order::select('products.id', \DB::raw('SUM(quantity) as total_sold'))
                 ->join('products', 'orders.product_id', '=', 'products.id')
                 ->groupBy('products.id', 'products.name')->whereHas('transaction', function ($query) {
-                $query->where('status', 1);
+                $query->where('status', 1)->where('store_id', auth()->user()->store_id);
             })
                 ->orderByDesc('total_sold')->get()
                 ->take(3),
