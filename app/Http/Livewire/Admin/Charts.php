@@ -3,11 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Order;
-use App\Models\Product;
-use App\Models\Transaction;
 use Livewire\Component;
-use \Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class Charts extends Component
 {
@@ -15,7 +11,6 @@ class Charts extends Component
 
     public $productLabels = [];
     public $totalSoldData = [];
-
 
     public function scopeTopSoldProductsLast7Days($query)
     {
@@ -29,19 +24,17 @@ class Charts extends Component
     public function render()
     {
         $topSoldProducts = Order::select('products.name', \DB::raw('SUM(quantity) as total_sold'))
-    ->join('products', 'orders.product_id', '=', 'products.id')
-    ->where('orders.created_at', '>=', now()->subDays(7))
-    ->groupBy('products.id', 'products.name')->whereHas('transaction', function ($query) {
-        $query->where('status', 1);
-    })
-    ->orderByDesc('total_sold')
-    ->take(3);
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->where('orders.created_at', '>=', now()->subDays(7))
+            ->groupBy('products.id', 'products.name')->whereHas('transaction', function ($query) {
+            $query->where('status', 1);
+        })
+            ->orderByDesc('total_sold')
+            ->take(3);
 
         // Prepare data for the bar graph
         $this->productLabels = $topSoldProducts->pluck('name')->toArray();
         $this->totalSoldData = $topSoldProducts->pluck('total_sold')->toArray();
-
-
 
         return view('livewire.admin.charts');
     }

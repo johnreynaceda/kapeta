@@ -5,8 +5,8 @@
                 <h2 class="text-xl font-semibold text-red-600">
                     SALES GRAPH
                 </h2>
-                <x-button label="view sales" wire:click="$set('sale_modal', true)" negative rounded
-                    right-icon="arrow-right" />
+                {{-- <x-button label="view sales" wire:click="$set('sale_modal', true)" negative rounded
+                    right-icon="arrow-right" /> --}}
             </div>
             <div class="mt-2">
                 <livewire:admin.charts />
