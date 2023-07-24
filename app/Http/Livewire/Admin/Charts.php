@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Transaction;
 use Livewire\Component;
 use \Carbon\Carbon;
@@ -12,43 +13,36 @@ class Charts extends Component
 {
     public $datas = [];
 
-    // public function mount()
-    // {
-    //     $startDate = Carbon::now()->subDays(7)->startOfDay();
-    //     $endDate = Carbon::now()->endOfDay();
+    public $productLabels = [];
+    public $totalSoldData = [];
 
-    //     $this->datas = Order::where('store_id', auth()->user()->store_id)->select(
-    //         DB::raw('DATE(created_at) as date'),
-    //         DB::raw('COUNT(*) as total_orders')
-    //     )
-    //     ->whereBetween('created_at', [$startDate, $endDate])
-    //     ->groupBy('date')
-    //     ->orderBy('date')
-    //     ->get();
 
-    // }
+    public function scopeTopSoldProductsLast7Days($query)
+    {
+        return $query->select('product_id', \DB::raw('SUM(quantity) as total_sold'))
+            ->where('created_at', '>=', now()->subDays(7))
+            ->groupBy('product_id')
+            ->orderByDesc('total_sold')
+            ->take(3);
+    }
 
     public function render()
     {
+        $topSoldProducts = Order::select('products.name', \DB::raw('SUM(quantity) as total_sold'))
+    ->join('products', 'orders.product_id', '=', 'products.id')
+    ->where('orders.created_at', '>=', now()->subDays(7))
+    ->groupBy('products.id', 'products.name')->whereHas('transaction', function ($query) {
+        $query->where('status', 1);
+    })
+    ->orderByDesc('total_sold')
+    ->take(3);
 
-        $startDate = Carbon::now()->subDays(7)->startOfDay();
-    $endDate = Carbon::now()->endOfDay();
+        // Prepare data for the bar graph
+        $this->productLabels = $topSoldProducts->pluck('name')->toArray();
+        $this->totalSoldData = $topSoldProducts->pluck('total_sold')->toArray();
 
-    $data = Order::where('store_id', auth()->user()->store_id)
-        ->select(
-            DB::raw('DATE(created_at) as date'),
-            DB::raw('COUNT(*) as total_orders')
-        )
-        ->whereBetween('created_at', [$startDate, $endDate])
-        ->groupBy('date')
-        ->orderBy('date')
-        ->get();
 
-    // Prepare data for the Chart.js script
 
-    foreach ($data as $item) {
-        $this->datas[$item->date] = $item->total_orders;
-    }
         return view('livewire.admin.charts');
     }
 }
