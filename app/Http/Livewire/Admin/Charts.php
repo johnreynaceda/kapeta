@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Order;
+use App\Models\Product;
 use Livewire\Component;
 
 class Charts extends Component
@@ -36,6 +37,17 @@ class Charts extends Component
         $this->productLabels = $topSoldProducts->pluck('name')->toArray();
         $this->totalSoldData = $topSoldProducts->pluck('total_sold')->toArray();
 
-        return view('livewire.admin.charts');
+        return view('livewire.admin.charts', [
+            'hot_sales' => Product::where('store_id', auth()->user()->store->id)
+                ->with(['orders' => function ($query) {
+                    $query->whereHas('transaction', function ($q) {
+                        $q->where('status', 1);
+                    });
+                }])
+                ->get()
+                ->sortByDesc(function ($product) {
+                    return $product->orders->sum('quantity');
+                }),
+        ]);
     }
 }
