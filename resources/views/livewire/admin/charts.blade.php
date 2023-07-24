@@ -25,7 +25,8 @@
             @forelse ($hot_sales as $product)
                 <div
                     class=" h-56 group relative overflow-hidden rounded-2xl bg-black/25 transition hover:ring-4 hover:ring-red-600 active:opacity-75 active:ring-indigo-500/25">
-                    <img class="object-cover" src="{{ Storage::url($product->image_path) }}" />
+                    <img class="object-cover"
+                        src="{{ Storage::url(\App\Models\Product::where('id', $product->id)->first()->image_path) }}" />
                     <div
                         class="absolute inset-0 flex flex-col justify-between bg-gradient-to-b from-transparent via-black/75 to-black">
                         <div class="flex items-center justify-start space-x-2 p-4">
@@ -41,10 +42,11 @@
                         <div class="flex items-end justify-between space-x-2 px-4 py-5">
                             <div class="space-y-1">
                                 <h3 class="text-xl font-semibold text-white">
-                                    {{ $product->name }}
+                                    {{ \App\Models\Product::where('id', $product->id)->first()->name }}
                                 </h3>
                                 <p class="text-sm font-semibold text-slate-400">
-                                    &#8369;{{ number_format($product->price, 2) }}</p>
+                                    &#8369;{{ number_format(\App\Models\Product::where('id', $product->id)->first()->price, 2) }}
+                                </p>
                             </div>
                             {{ $product->totalQuantity }}
                             <div
@@ -66,6 +68,7 @@
                 </div>
             @endforelse
             <!-- END Movie -->
+
         </nav>
 
         {{-- @foreach ($hot_sales as $item)
